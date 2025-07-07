@@ -13,17 +13,29 @@ I've created a few things
 
 DB SQL Code - Will be updated for more features like multi factor
 CREATE TABLE users (
+
     id INT AUTO_INCREMENT PRIMARY KEY,
+    
     username VARCHAR(50) NOT NULL UNIQUE,
+    
     email VARCHAR(100) NOT NULL UNIQUE,
+    
     password_hash VARCHAR(255) NOT NULL,
+    
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    
 );
 
 CREATE TABLE login_attempts (
+
     id INT AUTO_INCREMENT PRIMARY KEY,
+    
     user_id INT,
+    
     ip_address VARCHAR(45),
+    
     attempt_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
     FOREIGN KEY (user_id) REFERENCES users(id)
+    
 );
