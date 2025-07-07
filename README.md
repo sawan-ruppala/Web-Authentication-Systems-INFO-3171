@@ -10,3 +10,20 @@ I've created a few things
  - For DB encryption, I'll google around or wait till next class.
 - I also made a simple login system selector page with 5 buttons to toggle between the different systems (one of them being the vulnerable one).
 - I'll upload all this shit onto github and i can guarantee that it works cause i actually tested it this time. So you're free to use it as a templet.
+
+DB SQL Code - Will be updated for more features like multi factor
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE login_attempts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    ip_address VARCHAR(45),
+    attempt_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
