@@ -12,7 +12,7 @@ I've created a few things
 - I'll upload all this shit onto github and i can guarantee that it works cause i actually tested it this time. So you're free to use it as a templet.
 
 DB SQL Code - Will be updated for more features like multi factor
-
+```
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,  
@@ -28,3 +28,4 @@ CREATE TABLE login_attempts (
     attempt_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
+```
