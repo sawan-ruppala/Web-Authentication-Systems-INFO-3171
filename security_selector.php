@@ -19,7 +19,7 @@
         </form>
 
         <!-- Encrypted -->
-         <form action="login_encrypted_db.php">
+         <form action="login_encrypted.php">
             <button type="submit">Encrypted DB Login</button>
         </form>
 
