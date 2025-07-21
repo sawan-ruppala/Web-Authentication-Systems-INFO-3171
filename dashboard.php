@@ -1,7 +1,12 @@
 <?php
     session_start();
-    if(!isset($_SESSION["user_id"])) {
-        header("Location: login.php");
+
+    // Validate session
+    $valid_session = isset($_SESSION["user_id"]) && $_SESSION['ip'] === $_SERVER['REMOTE_ADDR'] && $_SESSION['user_agent'] === $_SERVER['HTTP_USER_AGENT'];
+    
+    if(!$valid_session) {
+        session_destroy();
+        header("Location: login_sqli.php");
         exit();
     }
 ?>

@@ -3,20 +3,21 @@
     require_once 'db_vulnerable.php'; // Ensure the database connection file is set up
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $username = $_POST['username']; // NO SANITIZATION (TRIMMING)
+        $username = $_POST['username']; // No sanitization (trimming)
         $password = $_POST['password'];
         
-        // DIRECT SQL INJECTION VULNERABILITY
+        // Direct SQL injection vulnerability
         $sql = "SELECT * FROM users WHERE username = '$username' AND password_hash = '$password'";
         $result = mysqli_query($conn, $sql);
-        
+
         // Fetch the user record
         if (mysqli_num_rows($result) > 0) {
-            $_SESSION['user_id'] = $username; // UNSAFE SESSION STORAGE
-            header("Location: dashboard_vulnerable.php");
+            $_SESSION['user_id'] = mysqli_fetch_assoc($result)['username']; // unsafe session storage
+            header("Location: dashboard_vulnerable.php?xss=1");
             exit();
         } else {
-            $error = "Invalid credentials";
+            // $error = "Invalid credentials";
+            die("Login failed. SQL: " . htmlspecialchars($sql) . "<br>Error: " . mysqli_error($conn));
         }
     }
 ?>
@@ -37,7 +38,7 @@
     <?php endif; ?>
     <form method="POST" action="login_vulnerable.php">
         <input type="text" name="username" placeholder="Username" id="username" required>
-        <input type="password" name="password" placeholder="Password" id="password" required>
+        <input type="password" name="password" placeholder="Password" id="password">
         <button type="submit">Login</button>
     </form>
     <a href="register_vulnerable.php">Don't have an account? Register</a>
