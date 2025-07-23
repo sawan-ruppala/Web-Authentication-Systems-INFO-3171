@@ -13,8 +13,7 @@ use Auth0\SDK\Configuration\SdkConfiguration;
 //api keys
 //safe to keep it here, as php is a server-scripting language
 $configuration = new SdkConfiguration(
-    
-    redirectUri: 'http://localhost/project/callback.php' 
+  
 );
 
 //establish connection

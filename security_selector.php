@@ -24,12 +24,12 @@
         </form>
 
         <!-- Multi Factor Authentication -->
-        <form action="login_mfa.php">
+        <form action="http://localhost/Web-Authentication-Systems-INFO-3171/auth0/auth0_login.php">
             <button type="submit">MFA Login</button>
         </form>
 
         <!-- AI -->
-         <form action="">
+         <form action="http://localhost/Web-Authentication-Systems-INFO-3171/auth0/auth0_login.php">
             <button type="submit">AI Login (Not yet implemented)</button>
         </form>
     </body>

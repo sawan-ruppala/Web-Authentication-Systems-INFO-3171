@@ -12,11 +12,7 @@ use Auth0\SDK\Configuration\SdkConfiguration;
 
 //API keys, safe to keep as PHP is server scripting
 $configuration = new SdkConfiguration(
-    domain: '',
-    clientId: '',
-    clientSecret: '',
-    cookieSecret: '',
-    redirectUri: 'http://localhost/project/callback.php' 
+ 
 );
 
 //creates the login website point

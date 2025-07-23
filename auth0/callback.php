@@ -12,11 +12,7 @@ use Auth0\SDK\Auth0;
 use Auth0\SDK\Configuration\SdkConfiguration;
 
 $configuration = new SdkConfiguration(
-     domain: '',
-    clientId: '',
-    clientSecret: '',
-    cookieSecret: '',
-    redirectUri: 'http://localhost/project/callback.php'
+  
 );
 
 //creates a new connection

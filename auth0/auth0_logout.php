@@ -19,5 +19,5 @@ session_destroy();
 //$auth0 -> logout is the verified path back to logout
 // the logout path is configured in the auth0 dashboard
 // uses header for the logout, to make things simpler to read
-header('Location: ' . $auth0->logout('http://localhost/project/security_selector.php'));
+header('Location: ' . $auth0->logout('http://localhost/Web-Authentication-Systems-INFO-3171/security_selector.php'));
 exit;
