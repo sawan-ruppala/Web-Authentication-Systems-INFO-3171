@@ -22,7 +22,7 @@ $configuration = new SdkConfiguration(
 //creates a new connection
 $auth0 = new Auth0($configuration);
 
-//Complete the authentication flow and obtain the tokens by calling exchange()
+//auth flow is completed, and user is directed to dashboard
 $auth0->exchange(); 
 
 
