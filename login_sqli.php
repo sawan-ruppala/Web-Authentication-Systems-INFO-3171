@@ -19,11 +19,18 @@
         // Fetch the user record
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Verify the password
-        if (password_verify($password, $user['password_hash'])) {
-            // echo json_encode(["success" => true, "message" => "Incorrect password."]);
-            // Start the session and store the user ID
-            $_SESSION["user_id"] = $user['id'];
+        // here for xss response
+        if (!$user) {
+            $error = "Invalid credentials";
+        } elseif (password_verify($password, $user['password_hash'])) { // Verify the password
+            session_regenerate_id(true); // regenerate session id
+            $_SESSION["user_id"] = $user['id']; // store the user ID
+            $_SESSION['ip'] = $_SERVER['REMOTE_ADDR']; // Store IP
+            $_SESSION['user_agent'] = $_SERVER['HTTP_USER_AGENT']; // Store browser fingerprint
+            $_SESSION['last_activity'] = time();
+
+            setcookie(session_name(), '', ['httponly' => true, 'samesite' => 'Strict']);
+
             header("Location: dashboard.php"); // Redirect
             exit();
         } else {
