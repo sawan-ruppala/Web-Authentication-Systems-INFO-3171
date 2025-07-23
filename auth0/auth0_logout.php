@@ -7,11 +7,7 @@ use Auth0\SDK\Auth0;
 use Auth0\SDK\Configuration\SdkConfiguration;
 
 $config = new SdkConfiguration(
-    domain: 'dev-1d6an1dziu0b7mok.ca.auth0.com',
-    clientId: '2pxfQBdNmSMFbs9mgPWdbTeLrKOkJj7Q',
-    clientSecret: '663B9U3f-jteA-CvNkRQLz0ZkwmBtMZl8hj5u9m2qJGTgjhm-3bwMxyygblx7ByQ',
-    cookieSecret: 'qsdgreyujnw12315431237532qvg',
-    redirectUri: 'http://localhost/project/callback.php'
+  
 );
 
 $auth0 = new Auth0($config);
